@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
-	private Long id;
-	private String firstName;
-	private String lastName;
-	private String userName;
-	private Date dateOfBirth;
-	private String emailAddress;
+public class TokenResponse {
+
+	private String status;
+	private String message;
+	private String token;
+	private Date expiresIn;
+	
 }

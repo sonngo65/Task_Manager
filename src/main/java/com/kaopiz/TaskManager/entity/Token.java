@@ -1,28 +1,31 @@
 package com.kaopiz.TaskManager.entity;
 
-import java.util.Set;
-import java.util.UUID;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
+@AllArgsConstructor 
 @NoArgsConstructor
-@Getter
-public class Permission {
+public class Token {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String name;
-	private String description;
-	@ManyToMany(mappedBy = "permissions")
-	private Set<Role> roles;
+	@Column(unique = true)
+	private String token;
+	private String tokenType = "Bearer";
+	private boolean revoked;
+	private boolean isexpired;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private Account account;
 	
 }

@@ -3,6 +3,7 @@ package com.kaopiz.TaskManager.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -22,7 +23,7 @@ import com.kaopiz.TaskManager.security.JwtSecurityFilter;
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
-
+ 
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -45,8 +46,9 @@ public class SecurityConfig {
 				.cors( Customizer.withDefaults())
 				.authorizeHttpRequests(authorizeHttpRequest -> authorizeHttpRequest
 						.requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-						.requestMatchers("/api/v1/login").permitAll()
-						.anyRequest().authenticated()
+						.requestMatchers("/api/v1/login","/api/v1/accounts/email","/api/v1/accounts/email/*","/api/v1/accounts/password").permitAll()
+						.requestMatchers(HttpMethod.POST, "/api/v1/accounts").permitAll()
+						.anyRequest().permitAll()
 						)
 				.sessionManagement( session->  session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authenticationProvider(authenticationProvider())

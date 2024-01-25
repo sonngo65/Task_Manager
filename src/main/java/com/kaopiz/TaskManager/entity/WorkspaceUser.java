@@ -1,33 +1,33 @@
 package com.kaopiz.TaskManager.entity;
 
-import java.util.UUID;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskStatus {
-
+@Getter
+@Setter
+public class WorkspaceUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	@ManyToOne
-	@JoinColumn(name = "task_id")
-	private Task task;
-	
-	@OneToOne
-	@JoinColumn(name = "status_id")
-	private Status status;
-	
+	@JoinColumn(name = "user_id")
+	private Account account;
+	@ManyToOne
+	@JoinColumn(name = "workspace_id")
+	private Workspace workspace; 
+	@ManyToOne
+	@JoinColumn(name= "role_id")
+	private Role role;
 	
 }

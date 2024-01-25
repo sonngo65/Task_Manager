@@ -1,37 +1,41 @@
 package com.kaopiz.TaskManager.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
+import jakarta.annotation.Generated;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskInfo {
+@Getter
+@Setter
+public class UploadFile {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy =  GenerationType.AUTO)
 	private Long id;
-	private String content;
-	private String description;
-	private Long estimated_time;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date start_time;
+	private Date uploadedTime;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date estimate;
-	
-	@OneToMany(mappedBy= "taskInfo")
-	private Set<Task> tasks;
-	
+	@OneToMany(mappedBy = "uploadFile",cascade = CascadeType.ALL)
+	private Set<File> files;
+	@OneToOne(mappedBy = "uploadedFile")
+	private TaskUser taskUser;
 	
 }

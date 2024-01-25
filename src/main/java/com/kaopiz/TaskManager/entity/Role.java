@@ -39,5 +39,9 @@ public class Role {
 	@OneToMany(mappedBy = "role",cascade =  CascadeType.ALL)
 	private Set<Account> accounts;
 	
+	@OneToMany(mappedBy="role")
+	private Set<WorkspaceUser> workspaceUsers;
+
+	
 	
 }

@@ -21,6 +21,9 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -58,7 +61,8 @@ public class Account implements UserDetails{
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "role_id")
 	private Role role;
-
+	@OneToMany(mappedBy = "account")
+	private Set<WorkspaceUser> workspaceUsers;
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		

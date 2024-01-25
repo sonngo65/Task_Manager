@@ -1,7 +1,7 @@
 package com.kaopiz.TaskManager.service;
 
-import com.kaopiz.TaskManager.payload.RoleDto;
+import com.kaopiz.TaskManager.payload.RoleDTO;
 
 public interface RoleService {
-	RoleDto save(RoleDto roleRequest);
+	RoleDTO save(RoleDTO roleRequest);
 }

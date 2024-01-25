@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RoleDto {
+public class RoleDTO {
 	private Long id;
 	private String name;
-	private List<PermissionDto> permissionDtos; 
+	private List<PermissionDTO> permissionDTOs; 
 }

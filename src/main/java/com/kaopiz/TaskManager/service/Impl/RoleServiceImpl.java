@@ -3,7 +3,7 @@ package com.kaopiz.TaskManager.service.Impl;
 import org.springframework.stereotype.Service;
 
 import com.kaopiz.TaskManager.entity.Permission;
-import com.kaopiz.TaskManager.payload.RoleDto;
+import com.kaopiz.TaskManager.payload.RoleDTO;
 import com.kaopiz.TaskManager.service.RoleService;
 
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 public class RoleServiceImpl implements RoleService {
 	
 	@Override
-	public RoleDto save(RoleDto roleRequest) {
+	public RoleDTO save(RoleDTO roleRequest) {
 	
 		return null;
 	}

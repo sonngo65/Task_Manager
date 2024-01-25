@@ -7,11 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskDto {
-	
+public class TaskTypeDTO {
 	private Long id;
-	private Long assignerId;
-	private Long taskTypeId;
-	private Long parentTaskId;
-	private TaskInfoDto taskInfo;
+	private String name;
 }
